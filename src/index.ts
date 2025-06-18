@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express"
 import userRouter from "./router/user/user"
+const {todoRouter} =require(`./router/todo-app/todos.router`)
 const app = express()
 const port = 3000
 app.use(express.json())
@@ -8,6 +9,7 @@ app.get("/", (req: Request, res: Response) => {
 res.send("hii")
 });
 app.use("/", userRouter)
+app.use('/todos', todoRouter)
 
 app.listen(port, ()=>{
     console.log(`http://localhost:${port}`);

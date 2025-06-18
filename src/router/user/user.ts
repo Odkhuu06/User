@@ -80,21 +80,3 @@ userRouter.put("/updateUser", (req: Request, res: Response) => {
 });
 
 export default userRouter;
-// const userRouter = express.Router()
-
-
-// userRouter.get("/", (req: Request, res: Response)=>{
-//     res.send({name: "odhuu", age: 30})
-// })
-
-// userRouter.post("/user", (req: Request, res: Response)=>{
-//     const {name, age }: {name: string, age: number}= req.body
-//     res.json({mesagge:`User ${name} is ${age} years old`})
-// })
-
-
-// userRouter.put("/updateUser", (req: Request, res: Response)=>{
-//     const {name, age }: {name: string, age: number}= req.body
-//     res.json(`Updated ${name} ${age}`)
-// })
-// export default userRouter;

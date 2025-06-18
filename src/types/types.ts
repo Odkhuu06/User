@@ -7,3 +7,8 @@ export type User ={
   password: string;
   userId?: string;
 };
+export type Todo={
+  id:string
+  desc:string
+  isComplete:boolean
+}
