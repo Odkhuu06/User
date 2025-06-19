@@ -24,6 +24,7 @@ export const getDelete = (req: Request, res: Response) => {
  
 };
 
-module.exports = {
-    getDelete
-}
+// module.exports = {
+//     getDelete
+// }
+export default getDelete

@@ -19,6 +19,7 @@ export const addTodo = async (req: Request, res: Response) => {
 
   res.json({ success: true, todos });
 };
-module.exports = {
-    addTodo
-}
+// module.exports = {
+//     addTodo
+// }
+export default addTodo

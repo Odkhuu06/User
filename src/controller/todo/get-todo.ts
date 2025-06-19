@@ -6,13 +6,14 @@ export const getTodoById = async (req: Request, res: Response) => {
   const todos = await readTodos();
 
   const todo = todos.find((todo) => todo.id === id);
-console.log(todo)
+console.log(id)
   if (!todo) {
     return res.json({ success: false, message: "not found todo" });
   }
   res.json({ todo });
   
 };
-module.exports = {
-    getTodoById
-}
+// module.exports = {
+//     getTodoById
+// }
+export default getTodoById
