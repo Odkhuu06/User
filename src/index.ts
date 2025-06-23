@@ -37,11 +37,33 @@ app.get("/", async (req: Request, res: Response) => {
   res.json(users);
 });
 
-app.post("/addUser", async (req:Request,res:Response)=>{
-    const response=db
+app.delete("/delete", async (req: Request, res: Response) => {
+  try {
+    const deleteUser = await db
+      .collection("users")
+      .deleteOne({ name: "bataa1" });
+    res.json(deleteUser);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve items" });
+  }
+});
+
+app.put("/update", async (req: Request, res: Response) => {
+  try {
+    const updateUser = await db
     .collection("users")
-    .insertOne({name:"bataa",age:25,  email: "bataa@example.com"})
-    res.json((await response).insertedId.getTimestamp())
+    .updateOne({name:"bold"},{$set:{name:"boldko"}})
+    res.json(updateUser);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve items" });
+  }
+});
+
+app.post("/addUser", async (req: Request, res: Response) => {
+  const response = db
+    .collection("users")
+    .insertOne({ name: "bataa1", age: 25, email: "bataa12@example.com" });
+  res.json((await response).insertedId.getTimestamp());
 });
 
 app.listen(port, async () => {
