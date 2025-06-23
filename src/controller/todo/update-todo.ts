@@ -30,7 +30,6 @@ export const updateTodo = async (req: Request, res: Response) => {
     updatedTodos,
   });
 };
-// module.exports = {
-//     updateTodo
-// }
-export default updateTodo
+module.exports = {
+    updateTodo
+}

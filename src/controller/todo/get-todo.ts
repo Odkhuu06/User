@@ -13,7 +13,6 @@ console.log(id)
   res.json({ todo });
   
 };
-// module.exports = {
-//     getTodoById
-// }
-export default getTodoById
+module.exports = {
+    getTodoById
+}

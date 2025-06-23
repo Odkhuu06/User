@@ -6,7 +6,6 @@ export const readTodos = async () => {
 
   return JSON.parse(todos) as Todo[];
 };
-// module.exports = {
-//     readTodos
-// }
-export default readTodos
+module.exports = {
+    readTodos
+}
