@@ -1,25 +1,22 @@
 import express, { Request, Response } from "express";
-import userRouter from "./router/user/user";
 import { Db, MongoClient } from "mongodb";
-import { Send } from "lucide-react";
-const { todoRouter } = require(`./router/todo-app/todos.router`);
+import "dotenv/config";
+import userRouter from "./router/user/user";
+import todoRouter from "./router/todo-app/Todo";
+
 const app = express();
 const port = 3001;
 app.use(express.json());
 
-// app.get("/", (req: Request, res: Response) => {
-//   //   res.send("users");
-//   res.send("hii");
-// });
-// app.use("/", userRouter);
-// app.use("/todos", todoRouter);
-let db: Db;
-const url =
-  "mongodb+srv://odkhuubymbajav06:v59VqE30urS1wXPP@first.josq7nj.mongodb.net/";
+export let db: Db;
+
+ app.use("/", userRouter);
+app.use("/", todoRouter);
 
 const connectDb = async () => {
   try {
-    const client = new MongoClient(url);
+    const client = new MongoClient(process.env.MONGO_URI!);
+    await client.connect();
     db = client.db("sample_mflix");
     console.log("LALALALAALALAALALLA");
 
@@ -41,7 +38,7 @@ app.delete("/delete", async (req: Request, res: Response) => {
   try {
     const deleteUser = await db
       .collection("users")
-      .deleteOne({ name: "bataa1" });
+      .deleteOne({ name: "John" });
     res.json(deleteUser);
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve items" });
@@ -62,7 +59,7 @@ app.put("/update", async (req: Request, res: Response) => {
 app.post("/addUser", async (req: Request, res: Response) => {
   const response = db
     .collection("users")
-    .insertOne({ name: "bataa1", age: 25, email: "bataa12@example.com" });
+    .insertOne({ name: "bataakaa", age: 11, email: "bataa220@example.com" });
   res.json((await response).insertedId.getTimestamp());
 });
 
@@ -71,6 +68,7 @@ app.listen(port, async () => {
 
   console.log(`http://localhost:${port}`);
 });
+
 // authentication
 
 // user create -> name, age, userName(unique), userEmail, phoneNumber, password
